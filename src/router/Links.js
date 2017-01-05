@@ -1,0 +1,6 @@
+export const ROOT = '/'
+export const LOGIN = '/login'
+export const MAIN = '/main'
+export const SECOND = '/second'
+export const THIRD = '/third'
+export const FORTH = '/forth'

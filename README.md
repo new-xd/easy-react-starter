@@ -1,3 +1,62 @@
+# easy-react-starter
+## 相关模块
+redux 状态管理
+react-router 路由
+
+## 问题
+在移动设备上开发react app时，遇到了以下问题
+
+1. 页面切换动画如何实现
+2. 页面的滚动状态如何保存
+3. 页面布局如何实现
+4. 动画状态是否应该在store中保存
+5. 业务请求逻辑应该写在界面，还是action，还是单独封装
+6. 哪一个层次的组件应该使用connect
+
+## 页面切换动画
+参考github上的解决方案，在路由上添加index属性，
+通过判断大小确定页面是前进还是后退，从而确定动画效果。
+页面切换的动画使用ReactCSSTransitionGroup实现
+
+## 页面滚动状态保存
+参考https://github.com/taion/react-router-scroll实现
+
+## 页面如何布局
+这里主要是由于一个bug：http://meyerweb.com/eric/thoughts/2011/09/12/un-fixing-fixed-elements-with-css-transforms/
+transform 这个属性会导致 position:relative/absolute/fixed的子级元素基于 transform的元素定位  
+所以布局考虑使用固定大小的div作为容器，由此引发的问题是，内部内容过长时的滚动不再是窗口滚动而是div滚动
+
+## 动画状态是否应该存在store中
+现在我觉得不应该，看了https://github.com/react-ld/react-pullLoad的写法之后，我发现让组件自己处理此类状态更合适
+因为如果放在store里，需要定义刷新状态，而什么时候恢复状态，怎么表示刷新失败都比较麻烦。  
+还有登录中 登录成功 登录失败等，如果都放到store，就会让componentWillReceiveProps的逻辑更复杂
+
+## 业务请求逻辑应该写在界面，还是action，还是单独封装
+单独封装，写在界面里，不能复用，而且也会让界面和业务紧密结合，
+写在action里没什么问题，不过需要添加一些处理动画的回调，不能是简单的action，
+所以最终感觉这部分还是单独拿出来的好，虽然也是action的形式
+
+## 哪一个层次的组件应该使用connect
+路由直接控制的那一层，一方面是需要尽量让组件和业务无关，另一方面避免太乱，不知道哪里取数据
+
+# todos
+1. 切换动画例子
+2. 布局例子
+3. 滚动状态保存的例子
+4. 一个完整的demo
+
+# 页面动画
+实现目标
+1. 可以设置默认的动画效果
+2. 可以为某个界面设置不同的动画效果
+动画使用ReactCSSTransitionGroup实现，
+动画分两种：进入动画和退出动画，在route上指定
+
+
+
+
+# create react app Readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
@@ -1242,4 +1301,4 @@ It is reported that `npm run build` can fail on machines with no swap space, whi
 ## Something Missing?
 
 If you have ideas for more “How To” recipes that should be on this page, [let us know](https://github.com/facebookincubator/create-react-app/issues) or [contribute some!](https://github.com/facebookincubator/create-react-app/edit/master/packages/react-scripts/template/README.md)
-# easy-react-starter
+

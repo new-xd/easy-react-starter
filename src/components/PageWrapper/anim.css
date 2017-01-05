@@ -1,0 +1,78 @@
+/* 缺省使用 右侧滑入 左侧淡出 */
+.default-enter {
+}
+
+.default-enter.default-enter-active {
+}
+
+.default-leave {
+}
+
+.default-leave.default-leave-active {
+}
+
+.show-enter {
+}
+
+.show-enter.show-enter-active {
+	-webkit-animation: moveFromRight .7s ease both;
+	animation: moveFromRight .7s ease both;
+}
+
+.show-leave {
+}
+
+.show-leave.show-leave-active {
+	-webkit-animation: fadeOut .7s ease both;
+	animation: fadeOut .7s ease both;
+}
+
+.dismiss-enter {
+}
+
+.dismiss-enter.dismiss-enter-active {
+	-webkit-animation: fadeIn .7s ease both;
+	animation: fadeIn .7s ease both;
+}
+
+.dismiss-leave {
+}
+
+.dismiss-leave.dismiss-leave-active {
+	-webkit-animation: moveToRight .7s ease both;
+	animation: moveToRight .7s ease both;
+}
+
+@-webkit-keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); }
+}
+@keyframes moveToRight { 
+	from { }
+	to { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+@-webkit-keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+	from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+@-webkit-keyframes fadeOut {
+	from { }
+	to { opacity: 0.3; }
+}
+@keyframes fadeOut {
+	from { }
+	to { opacity: 0.3; }
+}
+
+@-webkit-keyframes fadeIn {
+	from { opacity: 0.3; }
+}
+@keyframes fadeIn {
+	from { opacity: 0.3; }
+}
+
+
